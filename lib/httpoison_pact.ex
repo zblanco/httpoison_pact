@@ -7,6 +7,7 @@ defmodule HttpoisonPact do
   @doc """
   Executes an HTTPact.Request with HTTPoison and converts the HTTPoison.Response into an HTTPact.Response
   """
+  def execute(%HTTPact.Request{body: nil} = request), do: execute(%HTTPact.Request{request | body: []})
   def execute(%HTTPact.Request{
     method: method,
     path: path,
